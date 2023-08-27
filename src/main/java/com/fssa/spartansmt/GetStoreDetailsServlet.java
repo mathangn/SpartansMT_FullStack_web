@@ -32,7 +32,7 @@ public class GetStoreDetailsServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/pages/store.jsp");
+		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/pages/adminstore.jsp");
 		dis.forward(request, response);
 
 	}
