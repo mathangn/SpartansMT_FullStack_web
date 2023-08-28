@@ -81,13 +81,20 @@
 
 				<h4>PRODUCT DETAILS</h4>
 				<div>
-					<span>SpartansMT</span> <i class="fa-solid fa-angle-right"></i> <a
-						href=<%=GET_ALL_STORE_DETAILS %>><span class="menu">Store
-							Details</span></a> <i class="fa-solid fa-angle-right"></i> <span
-						class="menu">Product Details</span>
 
-					<button id="table_add_product" onclick="addbox()">Add
-						Product</button>
+					<span>SpartansMT</span> 
+
+					<i class="fa-solid fa-angle-right"></i> 
+
+					<a href=<%=GET_ALL_STORE_DETAILS %>>
+						<span class="menu">Store Details</span>
+					</a> 
+
+					<i class="fa-solid fa-angle-right"></i> 
+
+					<span class="menu">Product Details</span>
+
+					<button id="table_add_product" onclick="addbox()">Add Product</button>
 
 				</div>
 
@@ -117,8 +124,10 @@
 							alt="Product Image"></td>
 						<td class="td"><%=product.getProductTitle() %></td>
 						<td class="td"><%=product.getProductPrice() %></td>
+						
 						<td class="td"><button class="btn_edit_store"
 								onclick="updatebox()">Edit</button></td>
+						
 						<td class="td"><button class="btn_view_store">Delete</button></td>
 					</tr>
 
@@ -141,9 +150,9 @@
 
 		<div id="product_update_box">
 
-			<form id="product_form">
+			<form action="" method="post">
 
-				<h3 class="center" id="product_header">Update Product Details</h3>
+				<h3 class="center">Add Product Details</h3>
 
 				<table>
 
@@ -155,19 +164,19 @@
 
 					<tr>
 						<td class="label">Title :</td>
-						<td class="inputs"><input type="text" id="product_title"
+						<td class="inputs"><input name="productTitle" type="text" id="product_title"
 							required></td>
 					</tr>
 
 					<tr>
 						<td class="label">Price :</td>
-						<td class="inputs"><input type="number" id="price" required>
+						<td class="inputs"><input name="productPrice" type="number" id="price" required>
 						</td>
 					</tr>
 
 					<tr>
 						<td class="label">Product URL Link :</td>
-						<td class="inputs"><input type="url" id="product_image"
+						<td class="inputs"><input type="url" name="productImageUrl" id="product_image"
 							required></td>
 					</tr>
 
@@ -176,13 +185,55 @@
 				<div class="btns">
 
 					<button id="add_product_btn" type="submit">Add Product</button>
-					<button id="update_btn" type="submit">Update Product</button>
+					
 
 				</div>
 
 			</form>
 
+		</div>
+		
+		<div id="product_update_box1">
 
+			<form action="" method="post" id="product_form">
+
+				<h3 class="center">Update Product Details</h3>
+
+				<table>
+
+					<tr>
+						<th class="label">Labels</th>
+						<th class="inputs">Inputs</th>
+					</tr>
+
+
+					<tr>
+						<td class="label">Title :</td>
+						<td class="inputs"><input name="productTitle" type="text" id="product_title"
+							required></td>
+					</tr>
+
+					<tr>
+						<td class="label">Price :</td>
+						<td class="inputs"><input name="productPrice" type="number" id="price" required>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="label">Product URL Link :</td>
+						<td class="inputs"><input type="url" name="productImageUrl" id="product_image"
+							required></td>
+					</tr>
+
+				</table>
+
+				<div class="btns">
+
+					<button id="update_btn" type="submit">Update Product</button>
+
+				</div>
+
+			</form>
 
 		</div>
 
@@ -192,7 +243,7 @@
 
 
 
-	<script type="text/javascript" src="../assets/js/productlist.js"></script>
+	<script type="text/javascript" src="/spartansmt_web/assets/js/productlist.js"></script>
 
 </body>
 </html>

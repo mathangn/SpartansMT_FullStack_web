@@ -1,17 +1,14 @@
-/**
- * 
- */
+function updatebox(button) {
+	document.querySelector("#product_update_box").style.display = "none";
+	document.querySelector("#product_update_box1").style.display = "block";
+            
+	// let storeId = button.getAttribute("name");
+    // document.getElementById("update_store_details").setAttribute("action", "UpdateStoreDetailsServlet?id=" + storeId);
 
-  function updatebox() {
-            document.querySelector("#product_update_box").style.display = "block";
-            document.querySelector("#update_btn").style.display = "block";
-            document.querySelector("#add_product_btn").style.display = "none";
-            document.getElementById("product_header").innerText = "Update Product Details";
-  }
+}
 
-        function addbox() {
-            document.querySelector("#product_update_box").style.display = "block";
-            document.querySelector("#update_btn").style.display = "none";
-            document.querySelector("#add_product_btn").style.display = "block";
-            document.getElementById("product_header").innerText = "Add Product Details";
-        }
+function addbox() {
+	document.querySelector("#product_update_box").style.display = "block";
+    document.querySelector("#product_update_box1").style.display = "none";
+}
+        

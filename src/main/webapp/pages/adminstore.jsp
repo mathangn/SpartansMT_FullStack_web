@@ -32,6 +32,7 @@
 <body>
 
 	<%!public static final String GET_PRODUCTS_BY_ID_SERVLET = "GetProductsByStoreId";%>
+	<%!public static final String GET_STORE_DETAILS_SERVLET = "GetStoreDetailsServlet";%>
 
 	<nav>
 
@@ -73,7 +74,7 @@
 				</menu>
 			</a>
 
-			<a href="adminstore.jsp">
+			<a href="<%=GET_STORE_DETAILS_SERVLET %>">
 				<menu>Tables
 				</menu>
 			</a>
@@ -116,8 +117,12 @@
 					<tr>
 						<td class="td"><%=store.getName()%></td>
 						<td class="td"><%=store.getCategory()%></td>
-						<td class="td"><button onclick="updatebox()"
-								class="btn_edit_store">Edit</button></td>
+						
+						
+						<td class="td"><button onclick="updatebox(this,<%=store.getId()%>)"
+								class="btn_edit_store" name="<%=store.getId() %>">Edit</button></td>
+						
+						
 						<td class="td"><a
 							href=<%=GET_PRODUCTS_BY_ID_SERVLET + "?id=" + store.getId()%>><button
 									class="btn_view_store">View</button></a></td>
@@ -142,9 +147,10 @@
 
 		</div>
 
+		
 		<div id="store_update_box">
 
-			<form method="post" id="add_store_details"
+			<form method="post"
 				action="AddStoreDetailsServlet">
 
 				<h3 class="center">Add Store Details</h3>
@@ -190,8 +196,15 @@
 			</form>
 
 
-			<form action="UpdateStoreDetailsServlet" id="update_store_details"
-				method="post" style="display: none">
+			
+
+
+		</div>
+
+        <div id="store_update_box1">
+
+            <form id="update_store_details"
+				method="post">
 
 
 				<h3 class="center">Update Store Details</h3>
@@ -237,8 +250,8 @@
 
 			</form>
 
-
-		</div>
+        </div>
+		
 
 	</header>
 
