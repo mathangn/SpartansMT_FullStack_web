@@ -349,7 +349,7 @@ table tr th {
 	background: #555;
 }
 
-.btn_edit_store {
+.btn_delete_store {
 	padding: 10px 30px;
 	background-color: #4f5bbc;
 	color: white;
@@ -359,9 +359,10 @@ table tr th {
 	box-shadow: #4f5bbc 0px 0px 10px;
 	border-radius: 5%;
 	cursor: pointer;
+	margin: 0px 50px;
 }
 
-.btn_view_store {
+.btn_view_store, .btn_edit_store{
 	padding: 10px 30px;
 	background-color: #4f5bbc;
 	color: white;
@@ -406,11 +407,12 @@ table tr th {
 	color: white;
 }
 
+
 /* Store Details Update Box Code */
 #store_update_box {
 	display: none;
 	width: 800px;
-	height: 360px;
+	height: 320px;
 	background-color: #1d222e;
 	/* margin: auto; */
 	position: absolute;
@@ -421,7 +423,7 @@ table tr th {
 #store_update_box1 {
 	display: none;
 	width: 800px;
-	height: 360px;
+	height: 320px;
 	background-color: #1d222e;
 	/* margin: auto; */
 	position: absolute;
@@ -432,7 +434,7 @@ table tr th {
 #product_update_box {
 	display: none;
 	width: 800px;
-	height: 360px;
+	height: 320px;
 	background-color: #1d222e;
 	/* margin: auto; */
 	position: absolute;
@@ -443,7 +445,7 @@ table tr th {
 #product_update_box1 {
 	display: none;
 	width: 800px;
-	height: 360px;
+	height: 320px;
 	background-color: #1d222e;
 	/* margin: auto; */
 	position: absolute;
@@ -464,4 +466,66 @@ table tr th {
 #add_product_btn {
 	margin-right: 310px;
 	margin-top: 20px;
+}
+
+/* Delete Box Codes */
+#delete_box {
+    position: absolute;
+    top: 350px;
+    left: 40%;
+    width: 400px;
+    height: 200px;
+    background-color: #1d222e;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0%;
+    display: none;
+}
+
+
+#delete_file_text {
+    margin-top: 30px;
+}
+#delete_box_btns {
+    display: flex;
+    justify-content: space-around;
+}
+
+#delete_box p{
+    color: #4c5366;
+    font-weight: bold;
+}
+
+#delete_box_btns button:first-child{
+    padding: 15px 50px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#delete_box_btns button:nth-child(2){
+    padding: 15px 50px;
+    background-color: #fece2e;
+    font-size: 16px;
+    /* color: white; */
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* Cancel btn code for all pop */
+.cancel_icon{
+    position: absolute;
+    right: 0%;
+    font-size: 20px;
+    background: transparent;
+    font-weight: bold;
+    color: white;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
 }

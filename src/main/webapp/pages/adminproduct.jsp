@@ -10,7 +10,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SpartansMT Admin</title>
-<link rel="stylesheet" type="text/css" href="/spartansmt_web/assets/css/admin.css">
+
+<link rel="stylesheet" type="text/css"
+	href="/spartansmt_web/assets/css/admin.css">
+
 <link rel="icon" type="image/png" sizes="32x32"
 	href="https://iili.io/HpZaout.png">
 
@@ -82,19 +85,14 @@
 				<h4>PRODUCT DETAILS</h4>
 				<div>
 
-					<span>SpartansMT</span> 
+					<span>SpartansMT</span> <i class="fa-solid fa-angle-right"></i> <a
+						href=<%=GET_ALL_STORE_DETAILS%>> <span class="menu">Store
+							Details</span>
+					</a> <i class="fa-solid fa-angle-right"></i> <span class="menu">Product
+						Details</span>
 
-					<i class="fa-solid fa-angle-right"></i> 
-
-					<a href=<%=GET_ALL_STORE_DETAILS %>>
-						<span class="menu">Store Details</span>
-					</a> 
-
-					<i class="fa-solid fa-angle-right"></i> 
-
-					<span class="menu">Product Details</span>
-
-					<button id="table_add_product" onclick="addbox()">Add Product</button>
+					<button id="table_add_product" onclick="addbox()">Add
+						Product</button>
 
 				</div>
 
@@ -120,15 +118,15 @@
 
 					<tr>
 						<td class="td"><img class="product_img"
-							src=<%=product.getProductImage() %>
-							alt="Product Image"></td>
-						<td class="td"><%=product.getProductTitle() %></td>
-						<td class="td"><%=product.getProductPrice() %></td>
-						
+							src=<%=product.getProductImage()%> alt="Product Image"></td>
+						<td class="td"><%=product.getProductTitle()%></td>
+						<td class="td"><%=product.getProductPrice()%></td>
+
 						<td class="td"><button class="btn_edit_store"
-								onclick="updatebox()">Edit</button></td>
-						
-						<td class="td"><button class="btn_view_store">Delete</button></td>
+								onclick="updatebox(this, <%=product.getStoreId()%>, <%=product.getProductId()%>)">Edit</button></td>
+
+						<td class="td"><button class="btn_view_store"
+								onclick="deletebox(<%=product.getProductId()%>)">Delete</button></td>
 					</tr>
 
 					<%
@@ -149,35 +147,35 @@
 
 
 		<div id="product_update_box">
+		
+		<button class="cancel_icon" onclick="cancelbox()">X</button>
 
-			<form action="" method="post">
+			<form
+				action="AddProductDetailsServlet?id=<%=request.getParameter("id")%>"
+				method="post">
 
 				<h3 class="center">Add Product Details</h3>
 
 				<table>
 
-					<tr>
-						<th class="label">Labels</th>
-						<th class="inputs">Inputs</th>
-					</tr>
-
+					
 
 					<tr>
 						<td class="label">Title :</td>
-						<td class="inputs"><input name="productTitle" type="text" id="product_title"
-							required></td>
+						<td class="inputs"><input name="productTitle" type="text"
+							id="product_title" required></td>
 					</tr>
 
 					<tr>
 						<td class="label">Price :</td>
-						<td class="inputs"><input name="productPrice" type="number" id="price" required>
-						</td>
+						<td class="inputs"><input name="productPrice" type="number"
+							step="0.01" id="price" required></td>
 					</tr>
 
 					<tr>
 						<td class="label">Product URL Link :</td>
-						<td class="inputs"><input type="url" name="productImageUrl" id="product_image"
-							required></td>
+						<td class="inputs"><input type="url" name="productImageUrl"
+							id="product_image" required></td>
 					</tr>
 
 				</table>
@@ -185,44 +183,42 @@
 				<div class="btns">
 
 					<button id="add_product_btn" type="submit">Add Product</button>
-					
+
 
 				</div>
 
 			</form>
 
 		</div>
-		
-		<div id="product_update_box1">
 
-			<form action="" method="post" id="product_form">
+		<div id="product_update_box1">
+		
+		<button class="cancel_icon" onclick="cancelbox()">X</button>
+
+			<form method="post" id="product_form">
 
 				<h3 class="center">Update Product Details</h3>
 
 				<table>
 
-					<tr>
-						<th class="label">Labels</th>
-						<th class="inputs">Inputs</th>
-					</tr>
-
+					
 
 					<tr>
 						<td class="label">Title :</td>
-						<td class="inputs"><input name="productTitle" type="text" id="product_title"
-							required></td>
+						<td class="inputs"><input name="productTitle" type="text"
+							id="product_title" required></td>
 					</tr>
 
 					<tr>
 						<td class="label">Price :</td>
-						<td class="inputs"><input name="productPrice" type="number" id="price" required>
-						</td>
+						<td class="inputs"><input name="productPrice" type="number"
+							step="0.01" id="price" required></td>
 					</tr>
 
 					<tr>
 						<td class="label">Product URL Link :</td>
-						<td class="inputs"><input type="url" name="productImageUrl" id="product_image"
-							required></td>
+						<td class="inputs"><input type="url" name="productImageUrl"
+							id="product_image" required></td>
 					</tr>
 
 				</table>
@@ -242,8 +238,21 @@
 	</header>
 
 
+	<div id="delete_box">
+		<h2 id="delete_file_text">Delete Product</h2>
+		<p>Sure you want to delete</p>
+		<div id="delete_box_btns">
+			<form id="delete_btn" method="post">
+				<button type="submit">Delete</button>
+			</form>
+			<button onclick="canceldelectbox()">Cancel</button>
+		</div>
+	</div>
 
-	<script type="text/javascript" src="/spartansmt_web/assets/js/productlist.js"></script>
+
+
+	<script type="text/javascript"
+		src="/spartansmt_web/assets/js/productlist.js"></script>
 
 </body>
 </html>

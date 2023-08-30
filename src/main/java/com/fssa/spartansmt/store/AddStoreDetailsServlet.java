@@ -64,8 +64,8 @@ public class AddStoreDetailsServlet extends HttpServlet {
 			e.getMessage();
 		}
 		
-		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetStoreDetailsServlet");
-		dis.include(request, response);
+//		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetStoreDetailsServlet");
+//		dis.include(request, response);
 		
 	
 	}

@@ -74,7 +74,7 @@
 				</menu>
 			</a>
 
-			<a href="<%=GET_STORE_DETAILS_SERVLET %>">
+			<a href="<%=GET_STORE_DETAILS_SERVLET%>">
 				<menu>Tables
 				</menu>
 			</a>
@@ -104,8 +104,7 @@
 					<tr>
 						<th class="td">Name</th>
 						<th class="td">Category</th>
-						<th class="td">Edit Store Details</th>
-						<th class="td">View Products</th>
+						<th class="td">Actions</th>
 					</tr>
 
 					<%
@@ -117,22 +116,29 @@
 					<tr>
 						<td class="td"><%=store.getName()%></td>
 						<td class="td"><%=store.getCategory()%></td>
-						
-						
-						<td class="td"><button onclick="updatebox(this,<%=store.getId()%>)"
-								class="btn_edit_store" name="<%=store.getId() %>">Edit</button></td>
-						
-						
-						<td class="td"><a
-							href=<%=GET_PRODUCTS_BY_ID_SERVLET + "?id=" + store.getId()%>><button
-									class="btn_view_store">View</button></a></td>
+
+
+						<td class="td" id="actions_align">
+
+							<button onclick="updatebox(<%=store.getId()%>,'<%=store.getName()%>', '<%=store.getCategory()%>', '<%=store.getStoreLogoLink()%>')"
+								class="btn_edit_store">Edit</button>
+
+
+							<button id="center_btn" onclick="deletebox(<%=store.getId()%>)"
+								class="btn_delete_store">Delete</button> <a
+							href=<%=GET_PRODUCTS_BY_ID_SERVLET + "?id=" + store.getId()%>>
+								<button class="btn_view_store">View</button>
+						</a>
+
+						</td>
+
 					</tr>
 
 					<%
 					}
 					} else {
 					%>
-					<p>Null</p>
+					<p>Empty</p>
 					<%
 					}
 					%>
@@ -147,20 +153,17 @@
 
 		</div>
 
-		
+
 		<div id="store_update_box">
 
-			<form method="post"
-				action="AddStoreDetailsServlet">
+			<button class="cancel_icon" onclick="cancelbox()">X</button>
+
+			<form method="post" action="AddStoreDetailsServlet">
 
 				<h3 class="center">Add Store Details</h3>
 
 				<table>
 
-					<tr>
-						<th class="label">Labels</th>
-						<th class="inputs">Inputs</th>
-					</tr>
 
 					<tr>
 						<td class="label">Title:</td>
@@ -196,42 +199,39 @@
 			</form>
 
 
-			
+
 
 
 		</div>
 
-        <div id="store_update_box1">
+		<div id="store_update_box1">
 
-            <form id="update_store_details"
-				method="post">
+			<button class="cancel_icon" onclick="cancelbox()">X</button>
+
+			<form id="update_store_details" method="post">
 
 
 				<h3 class="center">Update Store Details</h3>
 
 				<table>
 
-					<tr>
-						<th class="label">Labels</th>
-						<th class="inputs">Inputs</th>
-					</tr>
 
 					<tr>
 						<td class="label">Title:</td>
 						<td class="inputs"><input type="text" name="storeTitle"
-							id="title" placeholder="Enter Store Name"></td>
+							id="title title1" placeholder="Enter Store Name"></td>
 					</tr>
 
 					<tr>
 						<td class="label">Category:</td>
 						<td class="inputs"><input type="text" name="storeCategory"
-							id="category" placeholder="Enter Store Category"></td>
+							id="category category1" placeholder="Enter Store Category"></td>
 					</tr>
 
 					<tr>
 						<td class="label">Store logo URL:</td>
 						<td class="inputs"><input type="url" name="storeLogo"
-							id="image" placeholder="Enter Store Logo Url"></td>
+							id="image image1" placeholder="Enter Store Logo Url"></td>
 					</tr>
 
 					<!-- <tr>
@@ -250,10 +250,22 @@
 
 			</form>
 
-        </div>
-		
+		</div>
+
 
 	</header>
+
+	<div id="delete_box">
+		<h2 id="delete_file_text">Delete Store</h2>
+		<p>Sure you want to delete</p>
+		<div id="delete_box_btns">
+			<form id="delete_btn" method="post">
+				<button type="submit">Delete</button>
+			</form>
+			<button onclick="canceldelectbox()">Cancel</button>
+		</div>
+	</div>
+
 
 
 	<script type="text/javascript"

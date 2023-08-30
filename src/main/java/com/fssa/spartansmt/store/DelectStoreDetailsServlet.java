@@ -3,7 +3,6 @@ package com.fssa.spartansmt.store;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,20 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fssa.spartansmt.exception.DAOException;
 import com.fssa.spartansmt.exception.InvalidStoreDetailsException;
-import com.fssa.spartansmt.model.Store;
 import com.fssa.spartansmt.service.StoreService;
 
 /**
- * Servlet implementation class UpdateStoreDetailsServlet
+ * Servlet implementation class DelectStoreDetailsServlet
  */
-@WebServlet("/UpdateStoreDetailsServlet")
-public class UpdateStoreDetailsServlet extends HttpServlet {
+@WebServlet("/DelectStoreDetailsServlet")
+public class DelectStoreDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateStoreDetailsServlet() {
+    public DelectStoreDetailsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,38 +40,20 @@ public class UpdateStoreDetailsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// doGet(request, response);
 		
-		String storeTitle = request.getParameter("storeTitle");
-		String storeCategory = request.getParameter("storeCategory");
-		String storeLogo = request.getParameter("storeLogo");
-		
-		String strStoreId = request.getParameter("id");
+		String strStoreId = request.getParameter("storeId");
 		int storeId = Integer.parseInt(strStoreId);
-		System.out.println(storeId);
-		
-		PrintWriter out = response.getWriter();
 		
 		StoreService storeService = new StoreService();
+		PrintWriter out = response.getWriter();
 		try {
-			Store store = new Store();
-			store.setId(storeId);
-			store.setName(storeTitle);
-			store.setCategory(storeCategory);
-			store.setStoreLogoLink(storeLogo);
-			boolean isadded = storeService.updateStore(store);
-			
-			if(isadded) {
-				out.println("<h1>Successfully updated store details</h1>");
+			boolean isDeleted = storeService.deleteStore(storeId);
+			if (isDeleted) {
+				out.println("<h1>Successfully deleted a store</h1>");
 			}
-			
 		}catch (DAOException | InvalidStoreDetailsException e) {
-			e.getMessage();
+			e.getStackTrace();
 		}
-		
-		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetStoreDetailsServlet");
-		dis.include(request, response);
 		
 	}
 
